@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PremiumCalculatorTest {
@@ -13,11 +14,11 @@ class PremiumCalculatorTest {
 
     @BeforeEach
     public void setUp() {
-        this.calculator = new PremiumCalculator();
+        this.calculator = new PremiumCalculator(asList());
     }
 
     @Test
-    public void name() {
+    public void getCoefficient() {
         assertThat(calculator.calculate()).isEqualTo(BigDecimal.ZERO);
     }
 }
