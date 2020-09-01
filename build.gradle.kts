@@ -24,5 +24,9 @@ tasks.test {
     testLogging {
         events("passed", "skipped", "failed")
     }
+    jvmArgs("--enable-preview")
 }
 
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("--enable-preview")
+}

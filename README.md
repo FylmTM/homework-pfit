@@ -36,10 +36,14 @@ Because there is no extra-logic specified for status handling, we are ignoring t
 However, we should ask analyst about this point, just to be extra that there is no
 specific behaviour (e.g. if staus is registered - return zero or throw exception) needed.
 
+**No runnable application**
+
+We are implementing business logic. Please, take look at tests to see behaviour.
+
 ## TODO
 
-* [ ] Setup project
-* [ ] Add test harness
+* [x] Setup project
+* [x] Add test harness
 * [ ] Add base domain
 * [ ] Figure out nice way of summing up insured sums
 * [ ] Figure out nice way of matching risk type premium calculation & coefficient
@@ -59,3 +63,5 @@ specific behaviour (e.g. if staus is registered - return zero or throw exception
 * [ ] Think about...
     * [ ] What is relationship between premium and risk? One-to-one? One-to-many? Many to one? Many-to-Many?
     * [ ] Do we want flexible way of summing up, or hardcode sub-object summing by type?
+    * [ ] Object hierarchy is kinda hardcoded now to explicit 3 levels. What if this is going to change?
+    * [ ] Do I want to convert RiskType to class?
