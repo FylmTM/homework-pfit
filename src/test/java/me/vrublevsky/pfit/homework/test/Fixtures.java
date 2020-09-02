@@ -6,10 +6,12 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
 public class Fixtures {
 
+    public static Policy emptyPolicy = new Policy("LV1", PolicyStatus.REGISTERED, emptyList());
     public static Policy policy = new Policy("LV1", PolicyStatus.APPROVED, asList(
             new PolicyObject("Object#1", asList(
                     new PolicySubObject("SubObject#1", BigDecimal.valueOf(1), asList(RiskType.FIRE)),

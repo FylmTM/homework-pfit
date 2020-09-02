@@ -1,6 +1,5 @@
 package me.vrublevsky.pfit.homework.premiums.impl;
 
-import me.vrublevsky.pfit.homework.PremiumCalculatorConfiguration;
 import me.vrublevsky.pfit.homework.PremiumCalculatorConfiguration.PremiumFireConfiguration;
 import me.vrublevsky.pfit.homework.domain.RiskType;
 import me.vrublevsky.pfit.homework.test.Fixtures;
@@ -11,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 
+import static me.vrublevsky.pfit.homework.PremiumCalculatorConfiguration.appConfiguration;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PremiumFireTest {
@@ -20,7 +20,7 @@ class PremiumFireTest {
 
     @BeforeEach
     public void setUp() {
-        this.configuration = PremiumCalculatorConfiguration.normal.premiumFireConfiguration();
+        this.configuration = appConfiguration.premiumFireConfiguration();
         this.premium = new PremiumFire(configuration);
     }
 

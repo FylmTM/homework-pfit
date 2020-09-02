@@ -23,12 +23,6 @@ I promise to keep my code formatted manually!
 
 ## Assumptions
 
-**Risk <-> Premium relationship is one-to-one**
-
-Current implementation assumes that relationship is one-to-one.
-If that is not the case, we need to sit down with an analyst and discuss how we can match
-risk type(s) with appropriate premium calculation logic.
-
 **Ignore policy status**
 
 We are implementing premium calculator logic, not "do we need to calculate premium?" logic.
@@ -39,6 +33,11 @@ specific behaviour (e.g. if status is registered - return zero or throw exceptio
 **No runnable application**
 
 We are implementing business logic. Please, take look at tests to see behaviour.
+
+**All amounts are EUR-based**
+
+There is no currency handling. To introduce one we would need to have exchange rates available to normalize
+amounts before comparing to limits.
 
 ## Design decisions
 
@@ -52,34 +51,34 @@ This helps to avoid weird coupling in long term, when more sophisticated coeffic
 
 We could introduce something like "insured sum to coefficient" helper, if it will make sense.
 
-**All amounts are EUR-based**
-
-There is no currency handling. To introduce one we would need to have exchange rates available to normalize
-amounts before comparing to limits.
-
 ## TODO
 
 * [x] Setup project
 * [x] Add test harness
 * [x] Add base domain
-* [ ] Figure out nice way of summing up insured sums
-* [ ] Figure out nice way of matching risk type premium calculation & coefficient
-    * [ ] Think about do we need special uniform way of handling coefficient steps?
-* [ ] Externalize coefficients
-* [ ] Ensure tests on...
-    * [ ] Summing sub-objects
-    * [ ] Fire risks premium calculation
-    * [ ] Theft risks premium calculation
-    * [ ] Total premium calculation
-* [ ] Ensure design...
-    * [ ] We can easily add risk
-    * [ ] We can have more than 1 step for coefficient
-    * [ ] We can have more complicated coefficient calculations (not just sum greater than)
-    * [ ] We can easily add premium
-    * [ ] Premium dictates summing logic
-* [ ] Think about...
-    * [ ] What is relationship between premium and risk? One-to-one? One-to-many? Many to one? Many-to-Many?
-    * [ ] Do we want flexible way of summing up, or hardcode sub-object summing by type?
-    * [ ] Object hierarchy is kinda hardcoded now to explicit 3 levels. What if this is going to change?
-    * [ ] Do I want to convert RiskType to class?
-    * [ ] Getting coefficient can be generalized (including default one), but do we want to? Depends on premiums.
+* [x] Figure out nice way of summing up insured sums
+* [x] Figure out nice way of matching risk type premium calculation & coefficient
+    * [x] Think about do we need special uniform way of handling coefficient steps?
+* [x] Externalize coefficients
+* [x] Ensure tests on...
+    * [x] Summing sub-objects
+    * [x] Fire risks premium calculation
+    * [x] Theft risks premium calculation
+    * [x] Total premium calculation
+* [x] Ensure design...
+    * [x] We can easily add risk
+    * [x] We can have more than 1 step for coefficient
+    * [x] We can have more complicated coefficient calculations (not just sum greater than)
+    * [x] We can easily add premium
+    * [x] Support coefficient-based premiums
+    * [x] Possibility to implement arbitrary premiums
+* [x] Think about...
+    * [x] What is relationship between premium and risk? One-to-one? One-to-many? Many to one? Many-to-Many?
+    * [x] Do we want flexible way of summing up, or hardcode sub-object summing by type?
+    * [x] Object hierarchy is kinda hardcoded now to explicit 3 levels. What if this is going to change?
+    * [x] Do I want to convert RiskType to class?
+    * [x] Getting coefficient can be generalized (including default one), but do we want to id?
+    * [x] Should there be a way for a calculator to ask which premiums to use in calculation?
+* [ ] Improvements
+    * [ ] Add policy builder (to make creating test data more pleasant)
+    * [ ] Actually introduce DI and get rid of manually constructing dependency graph and injecting configuration
