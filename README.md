@@ -80,5 +80,5 @@ We could introduce something like "insured sum to coefficient" helper, if it wil
     * [x] Getting coefficient can be generalized (including default one), but do we want to id?
     * [x] Should there be a way for a calculator to ask which premiums to use in calculation?
 * [ ] Improvements
-    * [ ] Add policy builder (to make creating test data more pleasant)
+    * [x] Add policy builder (to make creating test data more pleasant)
     * [ ] Actually introduce DI and get rid of manually constructing dependency graph and injecting configuration
