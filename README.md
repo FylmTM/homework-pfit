@@ -6,6 +6,30 @@ Insurance goes brrrr.
 
 * Java 14
 
+## Implementation
+
+`PremiumCalculator` is constructed with specified `Premium`'s and provides API to
+calculate total premium.
+
+Each `Premium` provides an API to calculate a premium amount for specified policy.
+
+#### Premium
+
+In order to implement premium one need to implement `Premium` interface and supply
+`Premium#calculate(Policy policy)` logic. This is top-level interface that allows to
+create any types of premiums.
+
+**Coefficient based premiums**
+
+`PremiumWithCoefficient` can be used to create such premiums. It requires
+providing implementations for insured sum reducer and coefficient calculation.
+
+#### Insured sum reducer
+
+Encapsulates strategy on how to calculate insured sum from specified policy.
+
+* `RiskTypeInsuredSumReducer` - sums all insured sums from policy sub object with specified risk type
+
 ## Notes
 
 **Why no framework/DI library is used?**
@@ -60,6 +84,7 @@ We could introduce something like "insured sum to coefficient" helper, if it wil
 * [x] Figure out nice way of matching risk type premium calculation & coefficient
     * [x] Think about do we need special uniform way of handling coefficient steps?
 * [x] Externalize coefficients
+* [x] Write implementation description
 * [x] Ensure tests on...
     * [x] Summing sub-objects
     * [x] Fire risks premium calculation
